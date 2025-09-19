@@ -15,11 +15,11 @@ import Nav from "../components/Nav.astro";
 		<Nav />
 		
 		<div class="min-h-screen w-full bg-white relative overflow-hidden">
-			<!-- Green Center Glow -->
-			<div
-				class="absolute inset-0 z-0 pointer-events-none"
-				style="background-image: radial-gradient(circle at center, #93c5fd, transparent); background-size: 100% 100%;"
-			></div>
+				<!-- Radial Gradient Background from Bottom -->
+				<div
+					class="absolute inset-0 z-0 pointer-events-none"
+					style="background: radial-gradient(125% 125% at 50% 90%, #fff 40%, #6366f1 100%);"
+				></div>
 			<!-- Main Content -->
 			<div class="relative z-10">
 				<slot />
