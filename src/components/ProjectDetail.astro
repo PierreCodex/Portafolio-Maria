@@ -1,0 +1,670 @@
+---
+// Datos del proyecto - Sincronizado con Projects.astro proyecto ID 1
+const projectData = {
+  title: "I.E.I. N° 432 - El Alto",
+  location: "El Alto, Talara",
+  subtitle: "Construcción de infraestructura educativa inicial con ambientes pedagógicos, administrativos y complementarios para 120 niños",
+  quickInfo: {
+    entidad: "Municipalidad Distrital de El Alto",
+    estado: "Culminado",
+    fecha: "Mayo 2022",
+    rol: "Residente de Obra Jr."
+  },
+  highlights: [
+    {
+      title: "Alcance",
+      description: "Construcción de infraestructura educativa con ambientes pedagógicos, administrativos y complementarios."
+    },
+    {
+      title: "Beneficiarios", 
+      description: "120 niños de educación inicial del distrito de El Alto."
+    },
+    {
+      title: "Entrega",
+      description: "Infraestructura educativa completamente operativa y entregada."
+    }
+  ],
+  category: "Infraestructura Educativa",
+  technologies: ["Construcción", "Supervisión", "Gestión de Obra"],
+  images: [
+    {
+      src: "/project-images/pronoei-1.jpg",
+      alt: "Vista exterior del PRONOEI Los Exploradores",
+      caption: "Fachada principal del centro educativo"
+    },
+    {
+      src: "/project-images/pronoei-2.jpg", 
+      alt: "Aulas interiores del PRONOEI",
+      caption: "Ambientes educativos equipados"
+    },
+    {
+      src: "/project-images/pronoei-3.jpg",
+      alt: "Área de juegos del PRONOEI",
+      caption: "Espacios recreativos para los niños"
+    },
+    {
+      src: "/project-images/pronoei-4.jpg",
+      alt: "Vista aérea del proyecto",
+      caption: "Ubicación estratégica en el A.H. San Pedro"
+    }
+  ]
+};
+---
+
+<article class="project-detail">
+  <!-- Hero Section -->
+  <section class="project-hero">
+    <div class="container mx-auto max-w-6xl px-4 py-16">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb mb-8">
+        <a href="/#projects" class="breadcrumb-link">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Volver a Proyectos
+        </a>
+      </nav>
+
+      <!-- Project Header -->
+      <header class="project-header">
+        <div class="project-badge">
+          <span class="badge-icon">🏗️</span>
+          <span class="badge-text">Infraestructura Educativa</span>
+        </div>
+        
+        <h1 class="project-title">
+          {projectData.title}
+        </h1>
+        
+        <p class="project-location">
+          📍 {projectData.location}
+        </p>
+        
+        <p class="project-subtitle">
+          {projectData.subtitle}
+        </p>
+      </header>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="project-content">
+    <div class="container mx-auto max-w-6xl px-4 py-12">
+      <div class="content-grid">
+        
+        <!-- Left Column: Quick Info -->
+        <aside class="quick-info-card">
+          <h2 class="card-title">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            Ficha del Proyecto
+          </h2>
+          
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label">Entidad Licitante</span>
+              <span class="info-value">{projectData.quickInfo.entidad}</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Estado</span>
+              <span class="info-value status-completed">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                {projectData.quickInfo.estado}
+              </span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Fecha de Culminación</span>
+              <span class="info-value">{projectData.quickInfo.fecha}</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Mi Rol</span>
+              <span class="info-value role-highlight">{projectData.quickInfo.rol}</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Column: Highlights -->
+        <div class="highlights-section">
+          <h2 class="section-title">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            Puntos Destacados
+          </h2>
+          
+          <div class="highlights-grid">
+            {projectData.highlights.map((highlight, index) => (
+              <div class="highlight-card">
+                <div class="highlight-number">{index + 1}</div>
+                <div class="highlight-content">
+                  <h3 class="highlight-title">{highlight.title}</h3>
+                  <p class="highlight-description">{highlight.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Gallery -->
+  <section class="image-gallery-section">
+    <div class="container mx-auto max-w-6xl px-4 py-12">
+      <h2 class="gallery-title">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        Galería del Proyecto
+      </h2>
+      
+      <div class="gallery-grid">
+        {projectData.images.map((image, index) => (
+          <div class="gallery-item" data-index={index}>
+            <div class="image-container">
+              <div class="image-placeholder">
+                <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <span class="placeholder-text">Imagen {index + 1}</span>
+              </div>
+              <div class="image-overlay">
+                <button class="view-button" aria-label={`Ver imagen: ${image.alt}`}>
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <p class="image-caption">{image.caption}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Action Section -->
+  <section class="action-section">
+    <div class="container mx-auto max-w-4xl px-4 py-16 text-center">
+      <h2 class="action-title">¿Te interesa conocer más detalles?</h2>
+      <p class="action-description">
+        Puedo compartir más información sobre este proyecto, metodologías utilizadas y lecciones aprendidas.
+      </p>
+      <div class="action-buttons">
+        <a href="#contacto" class="btn-primary">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+          Contactar
+        </a>
+        <a href="/#projects" class="btn-secondary">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0l-4-4m4 4l-4 4"/>
+          </svg>
+          Ver Más Proyectos
+        </a>
+      </div>
+    </div>
+  </section>
+</article>
+
+<style>
+  .project-detail {
+    min-height: 100vh;
+    background: var(--bg-color);
+  }
+
+  /* Hero Section */
+  .project-hero {
+    background: linear-gradient(135deg, var(--bg-color) 0%, rgba(59, 130, 246, 0.05) 100%);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+  }
+
+  .breadcrumb-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: rgba(59, 130, 246, 0.05);
+  }
+
+  .breadcrumb-link:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: translateX(-4px);
+  }
+
+  .project-header {
+    text-align: center;
+    max-width: 4xl;
+    margin: 0 auto;
+  }
+
+  .project-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 25px;
+    margin-bottom: 24px;
+  }
+
+  .badge-icon {
+    font-size: 1.2rem;
+  }
+
+  .badge-text {
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .project-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--title-color);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .project-location {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .project-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color-light);
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Quick Info Card */
+  .quick-info-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    position: sticky;
+    top: 100px;
+  }
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.1);
+  }
+
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .info-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+
+  .status-completed {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #22c55e;
+  }
+
+  .role-highlight {
+    color: var(--primary-blue);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+
+  /* Highlights Section */
+  .highlights-section {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.1);
+  }
+
+  .highlights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .highlight-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .highlight-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .highlight-content {
+    flex: 1;
+  }
+
+  .highlight-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 8px;
+  }
+
+  .highlight-description {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  /* Image Gallery */
+  .image-gallery-section {
+    background: rgba(59, 130, 246, 0.02);
+    border-top: 1px solid rgba(59, 130, 246, 0.1);
+  }
+
+  .gallery-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .gallery-item {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .image-container {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, rgba(59, 130, 246, 0.8) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-align: center;
+  }
+
+  .placeholder-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-item:hover .image-overlay {
+    opacity: 1;
+  }
+
+  .view-button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--primary-blue);
+  }
+
+  .view-button:hover {
+    background: white;
+    transform: scale(1.1);
+  }
+
+  .image-caption {
+    padding: 16px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* Action Section */
+  .action-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2563eb 100%);
+    color: white;
+  }
+
+  .action-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .action-description {
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--primary-blue);
+  }
+
+  .btn-primary:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .quick-info-card {
+      position: static;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .project-title {
+      font-size: 2rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quick-info-card,
+    .highlights-section {
+      padding: 24px;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .project-title {
+      font-size: 1.5rem;
+    }
+
+    .gallery-title {
+      font-size: 1.5rem;
+    }
+
+    .action-title {
+      font-size: 1.5rem;
+    }
+
+    .quick-info-card,
+    .highlights-section {
+      padding: 20px;
+    }
+  }
+</style>

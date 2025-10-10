@@ -14,17 +14,67 @@ import Nav from "../components/Nav.astro";
 	<body>
 		<Nav />
 		
-		<div class="min-h-screen w-full bg-white relative overflow-hidden">
+		<div class="min-h-screen w-full relative overflow-hidden" style="background: var(--body-color);">
 				<!-- Radial Gradient Background from Bottom -->
 				<div
 					class="absolute inset-0 z-0 pointer-events-none"
-					style="background: radial-gradient(125% 125% at 50% 90%, #fff 40%, #6366f1 100%);"
+					style="background: var(--gradient-hero);"
 				></div>
 			<!-- Main Content -->
 			<div class="relative z-10">
 				<slot />
 			</div>
 		</div>
+
+		<script>
+			// Theme Management
+			class ThemeManager {
+				constructor() {
+					this.init();
+				}
+
+				init() {
+					// Obtener tema guardado o usar preferencia del sistema
+					const savedTheme = localStorage.getItem('theme');
+					const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					
+					const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+					this.setTheme(theme);
+
+					// Escuchar cambios en la preferencia del sistema
+					window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+						if (!localStorage.getItem('theme')) {
+							this.setTheme(e.matches ? 'dark' : 'light');
+						}
+					});
+				}
+
+				setTheme(theme) {
+					document.documentElement.setAttribute('data-theme', theme);
+					localStorage.setItem('theme', theme);
+					
+					// Disparar evento personalizado para que otros componentes puedan reaccionar
+					window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
+				}
+
+				toggleTheme() {
+					const currentTheme = document.documentElement.getAttribute('data-theme');
+					const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+					this.setTheme(newTheme);
+					return newTheme;
+				}
+
+				getCurrentTheme() {
+					return document.documentElement.getAttribute('data-theme');
+				}
+			}
+
+			// Inicializar el gestor de temas
+			window.themeManager = new ThemeManager();
+
+			// Función global para alternar tema (para usar en botones)
+			window.toggleTheme = () => window.themeManager.toggleTheme();
+		</script>
 	</body>
 <style is:global>
 		html {

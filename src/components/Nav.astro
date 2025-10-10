@@ -3,66 +3,91 @@
 ---
 
 <nav
-  class="w-full bg-transparent border-b border-[#F2F0EB]/60 py-3 px-6 flex items-center justify-between fixed top-0 left-0 z-50 transition-all backdrop-blur-xl supports-[backdrop-filter]:backdrop-blur-xl"
-  style="backdrop-filter: blur(18px); background-color: rgba(255,255,255,0.05);"
+  id="navbar"
+  class="w-full border-b flex items-center justify-between fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out"
+  style="border-color: var(--border-color);"
 >
-  <!-- Logo -->
-  <div class="flex items-center">
-    <img
-      src="/Logo2.png"
-      alt="Casco de ingeniera"
-      width="48"
-      height="48"
-    />
-  </div>
-  <!-- Hamburger (mobile) -->
-  <button
-    id="navToggle"
-    class="md:hidden ml-auto p-2 rounded focus:outline-none focus-visible:ring focus-visible:ring-blue-500 hover:bg-black/5 transition"
-    aria-label="Abrir menú"
-    aria-expanded="false"
-  >
-    <svg
-      id="navIcon"
-      class="w-7 h-7"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+  <!-- Contenedor interno con estructura consistente -->
+  <div class="container mx-auto max-w-4xl px-4 py-2 relative flex items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img
+        src="/Logo2.png"
+        alt="Casco de ingeniera"
+        width="48"
+        height="48"
+      />
+    </div>
+    
+    <!-- Hamburger (mobile) -->
+    <button
+      id="navToggle"
+      class="md:hidden ml-auto p-2 rounded focus:outline-none focus-visible:ring focus-visible:ring-blue-500 hover:bg-black/5 transition"
+      aria-label="Abrir menú"
+      aria-expanded="false"
     >
-      <path d="M3 6h18M3 12h18M3 18h18"></path>
-    </svg>
-  </button>
-  <!-- Menu centrado (desktop) -->
-  <div id="desktopMenu" class="hidden md:flex flex-1 justify-center">
-    <ul
-      class="flex items-center space-x-8 text-[17px] font-medium text-black/90"
-    >
-      <li><a href="#inicio" class="nav-link">Inicio</a></li>
-      <li><span class="text-[#E5E3DE]">/</span></li>
-      <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
-      <li><span class="text-[#E5E3DE]">/</span></li>
-      <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
-      <li><span class="text-[#E5E3DE]">/</span></li>
-      <li><a href="#contacto" class="nav-link">Contacto</a></li>
-      <li><span class="text-[#E5E3DE]">/</span></li>
-      <li>
-        <a
-          href="#"
-          class="ml-4 px-4 py-2 text-white font-bold rounded-lg shadow text-sm flex items-center gap-1 transition-all"
-          style="background: var(--first-color-light);"
-          >Descargar CV <span class="text-base">↓</span></a
-        >
-      </li>
-    </ul>
+      <svg
+        id="navIcon"
+        class="w-7 h-7"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M3 6h18M3 12h18M3 18h18"></path>
+      </svg>
+    </button>
+    
+    <!-- Menu centrado (desktop) -->
+    <div id="desktopMenu" class="hidden md:flex flex-1 justify-center items-center">
+      <ul
+        class="flex items-center space-x-6 text-[17px] font-medium"
+        style="color: var(--text-color);"
+      >
+        <li class="flex items-center"><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li class="flex items-center"><span style="color: var(--concrete-gray);">/</span></li>
+        <li class="flex items-center"><a href="#sobre-mi" class="nav-link">Skill</a></li>
+        <li class="flex items-center"><span style="color: var(--concrete-gray);">/</span></li>
+        <li class="flex items-center"><a href="#portafolio" class="nav-link">Portafolio</a></li>
+        <li class="flex items-center"><span style="color: var(--concrete-gray);">/</span></li>
+        <li class="flex items-center"><a href="#diplomas" class="nav-link">Diplomas</a></li>
+        <li class="flex items-center"><span style="color: var(--concrete-gray);">/</span></li>
+        <li class="flex items-center"><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li class="flex items-center"><span style="color: var(--concrete-gray);">/</span></li>
+        <li class="flex items-center">
+          <button
+            id="themeToggle"
+            class="p-2 rounded-lg transition-all hover:bg-black/5 dark:hover:bg-white/10"
+            style="color: var(--text-color);"
+            aria-label="Cambiar tema"
+            title="Cambiar tema"
+          >
+            <svg id="themeIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <!-- Icono de sol (modo claro) -->
+              <path class="sun-icon" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+              <!-- Icono de luna (modo oscuro) -->
+              <path class="moon-icon hidden" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="flex items-center">
+          <a
+            href="#"
+            class="px-4 py-2 text-white font-bold rounded-lg shadow text-sm flex items-center gap-1 transition-all hover:opacity-90"
+            style="background: var(--primary-blue);"
+            >CV <span class="text-base">↓</span></a
+          >
+        </li>
+      </ul>
+    </div>
   </div>
   <!-- Mobile menu overlay -->
   <div
     id="mobileMenu"
     class="fixed inset-0 z-50 flex flex-col items-center justify-center min-h-screen w-full px-6 transition-all duration-300 ease-out opacity-0 pointer-events-none md:hidden backdrop-blur-xl supports-[backdrop-filter]:backdrop-blur-xl"
-    style="background: rgb(220,255,241); border: 1.5px solid rgba(16,185,129,0.13); box-shadow: 0 4px 32px 0 rgba(16,185,129,0.10);"
+    style="background: rgba(99, 102, 241, 0.95); border: 1.5px solid rgba(99, 102, 241, 0.2); box-shadow: 0 4px 32px 0 rgba(99, 102, 241, 0.15);"
   >
     <button
       id="mobileClose"
@@ -104,17 +129,33 @@
       <li><a href="#inicio" class="nav-link-mobile">Inicio</a></li>
       <li><a href="#sobre-mi" class="nav-link-mobile">Sobre mí</a></li>
       <li><a href="#portafolio" class="nav-link-mobile">Portafolio</a></li>
+      <li><a href="#diplomas" class="nav-link-mobile">Diplomas</a></li>
       <li><a href="#contacto" class="nav-link-mobile">Contacto</a></li>
+      <li>
+        <button
+          id="themeToggleMobile"
+          class="flex items-center gap-2 text-white text-lg font-medium transition-all hover:opacity-80"
+          aria-label="Cambiar tema"
+        >
+          <svg id="themeIconMobile" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <!-- Icono de sol (modo claro) -->
+            <path class="sun-icon" d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+            <!-- Icono de luna (modo oscuro) -->
+            <path class="moon-icon hidden" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+          </svg>
+          <span id="themeTextMobile">Modo Oscuro</span>
+        </button>
+      </li>
     </ul>
     <div class="mt-10 flex justify-center w-full">
       <a
         href="#"
-        class="cv-btn-mobile inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-base font-semibold tracking-wide shadow-lg transition"
-        style="background: var(--first-color, #10b981); color: var(--button-text-color, #fff);"
+        class="cv-btn-mobile inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-base font-semibold tracking-wide shadow-lg transition hover:opacity-90"
+        style="background: var(--white-pure); color: var(--primary-blue);"
       >
         Descargar CV <span
           aria-hidden="true"
-          style="color: var(--first-color, #10b981);">↓</span
+          style="color: var(--primary-blue);">↓</span
         >
       </a>
     </div>
@@ -158,6 +199,86 @@
     });
     mobileClose.addEventListener("click", closeMobileMenu);
   }
+
+  // Theme Toggle Functionality
+  function updateThemeIcons(theme) {
+    const sunIcons = document.querySelectorAll('.sun-icon');
+    const moonIcons = document.querySelectorAll('.moon-icon');
+    const themeTextMobile = document.getElementById('themeTextMobile');
+    
+    if (theme === 'dark') {
+      sunIcons.forEach(icon => icon.classList.add('hidden'));
+      moonIcons.forEach(icon => icon.classList.remove('hidden'));
+      if (themeTextMobile) themeTextMobile.textContent = 'Modo Claro';
+    } else {
+      sunIcons.forEach(icon => icon.classList.remove('hidden'));
+      moonIcons.forEach(icon => icon.classList.add('hidden'));
+      if (themeTextMobile) themeTextMobile.textContent = 'Modo Oscuro';
+    }
+  }
+
+  // Inicializar iconos cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeIcons(currentTheme);
+  });
+
+  // Escuchar cambios de tema
+  window.addEventListener('themeChanged', (e) => {
+    updateThemeIcons(e.detail.theme);
+  });
+
+  // Event listeners para los botones de tema
+  const themeToggle = document.getElementById('themeToggle');
+  const themeToggleMobile = document.getElementById('themeToggleMobile');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      if (window.toggleTheme) {
+        window.toggleTheme();
+      }
+    });
+  }
+
+  if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', () => {
+      if (window.toggleTheme) {
+        window.toggleTheme();
+      }
+    });
+  }
+
+  // Scroll Blur Effect
+  function updateNavbarOnScroll() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+
+    const scrollY = window.scrollY;
+    const scrollThreshold = 50; // Punto donde empieza el efecto
+    
+    if (scrollY > scrollThreshold) {
+      // Navegación con blur cuando hay scroll - más translúcida
+      navbar.style.backdropFilter = 'blur(25px)';
+      navbar.style.webkitBackdropFilter = 'blur(25px)';
+      navbar.style.backgroundColor = `rgba(var(--nav-bg-rgb), 0.4)`;
+      navbar.style.borderBottomColor = `rgba(var(--border-color-rgb), 0.3)`;
+      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+    } else {
+      // Navegación transparente en la parte superior
+      const opacity = scrollY / scrollThreshold;
+      navbar.style.backdropFilter = `blur(${opacity * 25}px)`;
+      navbar.style.webkitBackdropFilter = `blur(${opacity * 25}px)`;
+      navbar.style.backgroundColor = `rgba(var(--nav-bg-rgb), ${opacity * 0.4})`;
+      navbar.style.borderBottomColor = `rgba(var(--border-color-rgb), ${opacity * 0.3})`;
+      navbar.style.boxShadow = `0 4px 20px rgba(0, 0, 0, ${opacity * 0.08})`;
+    }
+  }
+
+  // Inicializar el efecto de scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    updateNavbarOnScroll(); // Aplicar estado inicial
+    window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
+  });
 </script>
 <style>
   @media (max-width: 767px) {
@@ -200,7 +321,7 @@
   }
   .nav-link-mobile {
     display: block;
-    color: var(--title-color, #222) !important;
+    color: var(--white-pure) !important;
     font-size: 1.25rem;
     font-weight: 800;
     letter-spacing: 0.01em;
@@ -223,8 +344,8 @@
     height: 2.5px;
     background: linear-gradient(
       90deg,
-      var(--first-color, #10b981) 0%,
-      var(--first-color-light, #48e191) 100%
+      var(--white-pure) 0%,
+      var(--primary-blue-light) 100%
     );
     border-radius: 2px;
     transform: scaleX(0);
@@ -234,7 +355,7 @@
   .nav-link-mobile.active,
   .nav-link-mobile:focus,
   .nav-link-mobile:hover {
-    color: #0f766e !important;
+    color: var(--primary-blue-light) !important;
     background: none;
   }
   .nav-link-mobile:hover::after,
@@ -249,14 +370,14 @@
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, #10b981 0%, #38bdf8 100%);
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
     border-radius: 2px;
     transform: scaleX(0);
     transition: transform 0.3s;
     transform-origin: left;
   }
   .nav-link:hover {
-    color: #0f766e;
+    color: var(--primary-blue-dark);
   }
   .nav-link:hover::after {
     transform: scaleX(1);
@@ -277,15 +398,15 @@
     bottom: -2px;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, #10b981 0%, #38bdf8 100%);
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
     border-radius: 2px;
     transform: scaleX(0);
     transition: transform 0.3s;
     transform-origin: left;
   }
   .nav-link:hover {
-    color: #0f766e;
-    background: rgba(16, 185, 129, 0.08);
+    color: var(--primary-blue-dark);
+    background: rgba(99, 102, 241, 0.08);
   }
   .nav-link:hover::after {
     transform: scaleX(1);

@@ -13,39 +13,205 @@ body {
   background-attachment: fixed;
   color: var(--text-color);
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Transiciones suaves para el cambio de tema */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--steel-gray);
 }
 :root {
   --header-height: 3.5rem;
 
-  /* Primary accent */
-  --first-color: #10b981; /* Green Accent */
-  --first-color-light: #48e191; /* Lighter Green Accent */
+  /* Paleta de Colores para Ingeniería Civil */
+  /* Colores Principales */
+  --primary-blue: #6366f1; /* Azul principal del gradiente */
+  --primary-blue-dark: #4338ca; /* Azul oscuro para textos importantes */
+  --primary-blue-light: #a5b4fc; /* Azul claro para elementos secundarios */
+  
+  /* Colores Profesionales */
+  --steel-gray: #64748b; /* Gris acero - profesional */
+  --concrete-gray: #94a3b8; /* Gris concreto */
+  --slate-dark: #334155; /* Gris oscuro para textos */
+  --slate-light: #e2e8f0; /* Gris muy claro para fondos */
+  
+  /* Colores de Acento */
+  --safety-orange: #f97316; /* Naranja de seguridad en construcción */
+  --success-green: #059669; /* Verde para elementos de éxito */
+  --white-pure: #ffffff; /* Blanco puro */
+  
+  /* Aplicación de la Paleta */
+  --first-color: var(--primary-blue); /* Color principal */
+  --first-color-light: var(--primary-blue-light); /* Color principal claro */
+  --first-color-dark: var(--primary-blue-dark); /* Color principal oscuro */
 
-  /* Light theme refined palette */
-  --title-color: hsl(218 33% 12%); /* Dark text for titles */
-  --text-color: hsl(218 22% 32%); /* Primary text color */
-  --text-color-light: hsl(218 16% 52%); /* Lighter text color */
-  --body-color: #ffffff; /* Page background - white */
-  --body-color-alt: hsl(0 0% 98%); /* Slightly off-white background */
-  --container-color: hsl(210 30% 98%); /* Container background */
-  --surface-alt: hsl(210 30% 96%); /* Subtle surface background */
-  --border-color: hsl(215 24% 88%); /* Light border color */
+  /* Variables de Tema - Modo Claro por defecto */
+  --title-color: var(--slate-dark); /* Títulos en gris oscuro */
+  --text-color: var(--steel-gray); /* Texto principal en gris acero */
+  --text-color-light: var(--concrete-gray); /* Texto secundario */
+  --body-color: var(--white-pure); /* Fondo blanco */
+  --body-color-alt: #f8fafc; /* Fondo alternativo muy claro */
+  --container-color: #f1f5f9; /* Fondo de contenedores */
+  --surface-alt: var(--slate-light); /* Superficie alternativa */
+  --border-color: #cbd5e1; /* Color de bordes */
+  --card-bg: var(--white-pure); /* Fondo de tarjetas */
+  --nav-bg: rgba(255, 255, 255, 0.95); /* Fondo de navegación */
+  --nav-bg-rgb: 255, 255, 255; /* RGB para navegación */
+  --border-color-rgb: 203, 213, 225; /* RGB para bordes */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombras */
+  --input-bg: var(--white-pure); /* Fondo de inputs */
+  --scrollbar-track: #f1f5f9; /* Track del scrollbar */
+  --scrollbar-thumb: #cbd5e1; /* Thumb del scrollbar */
 
-  --title-color2: hsl(0 0% 100%); /* White title for dark surfaces */
-  --text-color2: hsl(220 15% 72%); /* Lighter text color for dark backgrounds */
-  --body-color2: hsl(222 14% 10%); /* Dark background for inverted theme */
-  --body-color2-alt: hsl(222 14% 12%); /* Darker background for inverted sections */
-  --container-color2: hsl(222 16% 14%); /* Dark container background */
-  --surface-alt2: hsl(222 18% 18%); /* Darker surface background */
-  --border-color2: hsl(220 10% 28%); /* Dark border color */
-
-  --shadow-img: 0 0 18px hsla(10 60% 45% / 0.4); /* Light shadow effect for images */
-  --gradient-card: linear-gradient(180deg, #10b981 15%, transparent 80%); /* Green gradient for cards */
-  --gradient-hero: radial-gradient(circle at 30% 25%, rgba(16, 185, 129, 0.18), transparent 60%), linear-gradient(to bottom, hsl(210 30% 99%), hsl(210 30% 97%)); /* Hero section gradient */
+  /* Efectos y Gradientes */
+  --shadow-img: 0 0 18px rgba(99, 102, 241, 0.3); /* Sombra con azul principal */
+  --gradient-card: linear-gradient(180deg, var(--primary-blue) 15%, transparent 80%);
+  --gradient-hero: radial-gradient(circle at 30% 25%, rgba(99, 102, 241, 0.15), transparent 60%), 
+                   linear-gradient(to bottom, var(--body-color-alt), var(--container-color));
   --noise-filter: contrast(110%) brightness(101%);
 
-  /* Section backgrounds (optional specialized) */
+  /* Fondos de Secciones Especializadas */
   --skills-bg: var(--surface-alt);
-  --projects-bg: hsl(130 50% 90%); /* Light green for projects section */
-  --contact-bg: hsl(140 40% 85%); /* Soft green for contact section */
+  --projects-bg: rgba(99, 102, 241, 0.05); /* Fondo con tinte azul muy sutil */
+  --contact-bg: rgba(100, 116, 139, 0.05); /* Fondo con tinte gris acero sutil */
+  
+  /* Colores de Estado */
+  --success-color: var(--success-green);
+  --warning-color: var(--safety-orange);
+  --info-color: var(--primary-blue);
+}
+
+/* Tema Oscuro - Se activa cuando html tiene data-theme="dark" */
+[data-theme="dark"] {
+  --title-color: var(--white-pure); /* Títulos blancos en tema oscuro */
+  --text-color: var(--slate-light); /* Texto claro en tema oscuro */
+  --text-color-light: var(--concrete-gray); /* Texto secundario */
+  --body-color: #0f172a; /* Fondo oscuro */
+  --body-color-alt: #1e293b; /* Fondo oscuro alternativo */
+  --container-color: #334155; /* Contenedores oscuros */
+  --surface-alt: #475569; /* Superficie oscura alternativa */
+  --border-color: var(--steel-gray); /* Bordes en tema oscuro */
+  --card-bg: #1e293b; /* Fondo de tarjetas oscuro */
+  --nav-bg: rgba(15, 23, 42, 0.95); /* Fondo de navegación oscuro */
+  --nav-bg-rgb: 15, 23, 42; /* RGB para navegación oscura */
+  --border-color-rgb: 100, 116, 139; /* RGB para bordes oscuros */
+  --shadow-color: rgba(0, 0, 0, 0.3); /* Color de sombras más intenso */
+  --input-bg: #334155; /* Fondo de inputs oscuro */
+  --scrollbar-track: #1e293b; /* Track del scrollbar oscuro */
+  --scrollbar-thumb: #475569; /* Thumb del scrollbar oscuro */
+  
+  /* Gradientes actualizados para tema oscuro */
+  --gradient-hero: radial-gradient(circle at 30% 25%, rgba(99, 102, 241, 0.2), transparent 60%), 
+                   linear-gradient(to bottom, #1e293b, #334155);
+  --projects-bg: rgba(99, 102, 241, 0.1); /* Fondo con tinte azul más visible en oscuro */
+  --contact-bg: rgba(100, 116, 139, 0.1); /* Fondo con tinte gris acero más visible */
+}
+
+/* Clases de utilidad para alineación consistente */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Asegurar alineación consistente en todos los elementos */
+.content-wrapper {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .content-wrapper {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+/* Typewriter Effect */
+.typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid var(--primary-blue);
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  width: 0; /* Empezar con ancho 0 */
+  display: inline-block; /* Necesario para que funcione el width */
+  animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+}
+
+.typewriter-title {
+  overflow: hidden;
+  border-right: 0.15em solid var(--primary-blue);
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+  width: 0; /* Empezar con ancho 0 */
+  display: inline-block; /* Necesario para que funcione el width */
+  /* Animación más fluida: una sola vez y mantener resultado */
+  animation: typing-title 3.2s steps(28, end) 1 both, blink-caret-title 0.75s step-end 3.2s 3;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes typing-title {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary-blue); }
+}
+
+@keyframes blink-caret-title {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary-blue); }
 }

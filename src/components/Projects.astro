@@ -1,0 +1,679 @@
+---
+// Datos de proyectos de ejemplo para Ingeniería Civil
+const projects = [
+  {
+    id: 1,
+    title: "I.E.I. N° 432 - El Alto",
+    description: "Construcción de infraestructura educativa inicial con ambientes pedagógicos, administrativos y complementarios para 120 niños en el distrito de El Alto, Talara.",
+    image: "/projects/iei-432.jpg",
+    technologies: ["Construcción", "Supervisión", "Gestión de Obra"],
+    category: "Infraestructura Educativa",
+    status: "Culminado",
+    date: "Mayo 2022",
+    icon: "🏫"
+  },
+  {
+    id: 2,
+    title: "Modelado BIM de Edificio Residencial",
+    description: "Desarrollo completo de modelo BIM para edificio residencial de 5 pisos, incluyendo instalaciones, estructuras y coordinación multidisciplinaria.",
+    image: "/projects/bim-residential.jpg",
+    technologies: ["Revit", "BIM", "Modelado 3D"],
+    category: "BIM",
+    status: "En Progreso",
+    date: "2024",
+    icon: "🏢"
+  },
+  {
+    id: 3,
+    title: "Estudio de Suelos y Cimentaciones",
+    description: "Análisis geotécnico completo y diseño de cimentaciones para proyecto de infraestructura urbana con estudios de laboratorio especializados.",
+    image: "/projects/soil-study.jpg",
+    technologies: ["Geotecnia", "Ensayos de Laboratorio", "Análisis"],
+    category: "Geotecnia",
+    status: "Completado",
+    date: "2023",
+    icon: "🏗️"
+  },
+  {
+    id: 4,
+    title: "Diseño de Sistema de Drenaje",
+    description: "Proyecto integral de sistema de drenaje pluvial para zona urbana con análisis hidrológico completo y modelado hidráulico avanzado.",
+    image: "/projects/drainage-system.jpg",
+    technologies: ["Hidrología", "AutoCAD", "Diseño Hidráulico"],
+    category: "Hidráulica",
+    status: "Completado",
+    date: "2023",
+    icon: "💧"
+  },
+  {
+    id: 5,
+    title: "Diseño de Carretera Rural",
+    description: "Proyecto de diseño geométrico y estructural de carretera rural de 15km con análisis topográfico y estudios de impacto ambiental.",
+    image: "/projects/road-design.jpg",
+    technologies: ["Topografía", "Diseño Vial", "AutoCAD"],
+    category: "Vial",
+    status: "Completado",
+    date: "2023",
+    icon: "🛣️"
+  }
+];
+---
+
+<section class="projects-section py-16" style="background: var(--projects-bg);">
+  <div class="container mx-auto max-w-6xl px-4">
+    <!-- Título de la sección -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--title-color);">
+        Proyectos Destacados
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto" style="color: var(--text-color);">
+        Una selección de proyectos de ingeniería civil que demuestran mi experiencia en análisis estructural, 
+        modelado BIM y diseño de infraestructura.
+      </p>
+    </div>
+
+    <!-- Slider Container -->
+    <div class="slider-container">
+      <!-- Navigation Arrows -->
+      <button class="slider-nav slider-nav-prev" id="prevBtn" aria-label="Proyecto anterior">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      
+      <button class="slider-nav slider-nav-next" id="nextBtn" aria-label="Siguiente proyecto">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <!-- Slider Track -->
+      <div class="slider-track" id="sliderTrack">
+        {projects.map((project, index) => (
+          <article class={`project-slide ${index === 0 ? 'active' : ''}`} data-slide={index}>
+            <!-- Contenido del proyecto -->
+            <div class="project-content">
+              <!-- Header con icono y categoría -->
+              <div class="project-header">
+                <div class="project-icon">
+                  <span class="icon-emoji">{project.icon}</span>
+                  <span class="project-category" style="color: var(--primary-blue);">
+                    {project.category}
+                  </span>
+                </div>
+                <div class="project-meta">
+                  <span class="project-date" style="color: var(--text-color-light);">
+                    {project.date}
+                  </span>
+                  <span class={`status-badge ${project.status === 'Completado' ? 'status-completed' : 'status-progress'}`}>
+                    {project.status}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Título y descripción -->
+              <div class="project-main">
+                <h3 class="project-title" style="color: var(--title-color);">
+                  {project.title}
+                </h3>
+                <p class="project-description" style="color: var(--text-color);">
+                  {project.description}
+                </p>
+              </div>
+
+              <!-- Tecnologías utilizadas -->
+              <div class="project-technologies">
+                {project.technologies.map((tech) => (
+                  <span class="tech-tag">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <!-- Botón de acción -->
+              <div class="project-actions">
+                {project.id === 1 ? (
+                  <a href="/project-detail" class="project-btn">
+                    <span>Ver Detalles</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                ) : (
+                  <button class="project-btn">
+                    <span>Ver Detalles</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Dots Navigation -->
+      <div class="slider-dots" id="sliderDots">
+        {projects.map((_, index) => (
+          <button 
+            class={`dot ${index === 0 ? 'active' : ''}`} 
+            data-slide={index}
+            aria-label={`Ir al proyecto ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Call to action -->
+    <div class="text-center mt-12">
+      <p class="text-lg mb-6" style="color: var(--text-color);">
+        ¿Interesado en colaborar en un proyecto?
+      </p>
+      <a 
+        href="#contacto" 
+        class="cta-button"
+      >
+        Contactar
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    --projects-bg: linear-gradient(135deg, var(--bg-color) 0%, rgba(59, 130, 246, 0.05) 100%);
+  }
+
+  /* Slider Container */
+  .slider-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--card-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+  }
+
+  /* Slider Track */
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+  }
+
+  /* Project Slides */
+  .project-slide {
+    min-width: 100%;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.5s ease;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+
+  .project-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Navigation Arrows */
+  .slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--primary-blue);
+    backdrop-filter: blur(10px);
+  }
+
+  .slider-nav:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px var(--shadow-color);
+  }
+
+  .slider-nav-prev {
+    left: 20px;
+  }
+
+  .slider-nav-next {
+    right: 20px;
+  }
+
+  /* Dots Navigation */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    background: rgba(59, 130, 246, 0.05);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active,
+  .dot:hover {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transform: scale(1.2);
+  }
+
+  /* Project Content */
+  .project-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .project-icon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .icon-emoji {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  .project-category {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .project-date {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-completed {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .status-progress {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+  }
+
+  .project-main {
+    margin-bottom: 24px;
+  }
+
+  .project-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .project-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .tech-tag {
+    padding: 8px 16px;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary-blue);
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .tech-tag:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .project-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .project-btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  }
+
+
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 32px;
+    background: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .slider-container {
+      margin: 0 16px;
+      border-radius: 16px;
+    }
+
+    .project-slide {
+      padding: 24px 20px;
+    }
+
+    .slider-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .slider-nav-prev {
+      left: 12px;
+    }
+
+    .slider-nav-next {
+      right: 12px;
+    }
+
+    .project-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+    }
+
+    .project-description {
+      font-size: 1rem;
+    }
+
+    .icon-emoji {
+      font-size: 2rem;
+    }
+
+    .tech-tag {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+    }
+
+    .slider-dots {
+      padding: 16px;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .project-slide {
+      padding: 20px 16px;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+    }
+
+    .project-description {
+      font-size: 0.95rem;
+    }
+
+    .project-btn {
+      padding: 12px 24px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+  class ProjectSlider {
+    constructor() {
+      this.currentSlide = 0;
+      this.slides = document.querySelectorAll('.project-slide');
+      this.dots = document.querySelectorAll('.dot');
+      this.prevBtn = document.getElementById('prevBtn');
+      this.nextBtn = document.getElementById('nextBtn');
+      this.sliderTrack = document.getElementById('sliderTrack');
+      this.totalSlides = this.slides.length;
+      this.autoPlayInterval = null;
+      this.autoPlayDelay = 5000; // 5 segundos
+
+      this.init();
+    }
+
+    init() {
+      if (this.totalSlides === 0) return;
+
+      // Event listeners para navegación
+      this.prevBtn?.addEventListener('click', () => this.prevSlide());
+      this.nextBtn?.addEventListener('click', () => this.nextSlide());
+
+      // Event listeners para dots
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => this.goToSlide(index));
+      });
+
+      // Navegación por teclado
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') this.prevSlide();
+        if (e.key === 'ArrowRight') this.nextSlide();
+      });
+
+      // Touch/swipe support
+      this.addTouchSupport();
+
+      // Auto-play
+      this.startAutoPlay();
+
+      // Pausar auto-play al hacer hover
+      const sliderContainer = document.querySelector('.slider-container');
+      sliderContainer?.addEventListener('mouseenter', () => this.stopAutoPlay());
+      sliderContainer?.addEventListener('mouseleave', () => this.startAutoPlay());
+
+      // Mostrar el primer slide
+      this.updateSlider();
+    }
+
+    goToSlide(index) {
+      if (index < 0 || index >= this.totalSlides) return;
+      
+      this.currentSlide = index;
+      this.updateSlider();
+      this.resetAutoPlay();
+    }
+
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+      this.updateSlider();
+      this.resetAutoPlay();
+    }
+
+    prevSlide() {
+      this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+      this.updateSlider();
+      this.resetAutoPlay();
+    }
+
+    updateSlider() {
+      // Actualizar slides
+      this.slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === this.currentSlide);
+      });
+
+      // Actualizar dots
+      this.dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === this.currentSlide);
+      });
+
+      // Mover el track del slider
+      if (this.sliderTrack) {
+        const translateX = -this.currentSlide * 100;
+        this.sliderTrack.style.transform = `translateX(${translateX}%)`;
+      }
+
+      // Actualizar aria-labels para accesibilidad
+      this.prevBtn?.setAttribute('aria-label', 
+        `Ir al proyecto ${this.currentSlide === 0 ? this.totalSlides : this.currentSlide}`
+      );
+      this.nextBtn?.setAttribute('aria-label', 
+        `Ir al proyecto ${this.currentSlide === this.totalSlides - 1 ? 1 : this.currentSlide + 2}`
+      );
+    }
+
+    addTouchSupport() {
+      let startX = 0;
+      let endX = 0;
+      const minSwipeDistance = 50;
+
+      const sliderContainer = document.querySelector('.slider-container');
+      if (!sliderContainer) return;
+
+      sliderContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      sliderContainer.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        const swipeDistance = Math.abs(startX - endX);
+        
+        if (swipeDistance > minSwipeDistance) {
+          if (startX > endX) {
+            this.nextSlide();
+          } else {
+            this.prevSlide();
+          }
+        }
+      }, { passive: true });
+    }
+
+    startAutoPlay() {
+      if (this.totalSlides <= 1) return;
+      
+      this.stopAutoPlay();
+      this.autoPlayInterval = setInterval(() => {
+        this.nextSlide();
+      }, this.autoPlayDelay);
+    }
+
+    stopAutoPlay() {
+      if (this.autoPlayInterval) {
+        clearInterval(this.autoPlayInterval);
+        this.autoPlayInterval = null;
+      }
+    }
+
+    resetAutoPlay() {
+      this.stopAutoPlay();
+      this.startAutoPlay();
+    }
+
+    // Método público para destruir el slider
+    destroy() {
+      this.stopAutoPlay();
+      // Remover event listeners si es necesario
+    }
+  }
+
+  // Inicializar el slider cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    new ProjectSlider();
+  });
+
+  // También inicializar si el script se carga después del DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      new ProjectSlider();
+    });
+  } else {
+    new ProjectSlider();
+  }
+</script>
